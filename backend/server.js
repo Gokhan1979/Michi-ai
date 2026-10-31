@@ -20,15 +20,9 @@ app.post("/ask-michi", async (req, res) => {
 
   try {
 
-    const reply = `
-MICHI AI:
+    const { askAI } = await import("./aiService.js");
 
-Senin mesajın:
-${userMessage}
-
-AI bağlantısı için güvenli sistem hazır.
-  `;
-
+const reply = await askAI(userMessage);
 
     res.json({
       reply: reply

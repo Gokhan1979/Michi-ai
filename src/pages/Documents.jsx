@@ -27,6 +27,8 @@ function Documents() {
         Upload Document
       </button>
 
+      <FileUploader />
+
     </div>
   );
 }

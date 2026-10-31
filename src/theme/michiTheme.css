@@ -37,3 +37,61 @@ body {
   background: var(--michi-gold);
   color: var(--michi-black);
 }
+
+.app {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, #1a1405 0%, #050505 45%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.logo-area {
+  text-align: center;
+}
+
+.michi-logo {
+  width: 220px;
+  max-width: 80vw;
+  margin-bottom: 20px;
+  filter:
+    drop-shadow(0 0 15px #D4AF37)
+    drop-shadow(0 0 35px #D4AF37);
+  animation: michiGlow 3s ease-in-out infinite;
+}
+
+.gold-line {
+  width: 120px;
+  height: 2px;
+  background: #D4AF37;
+  margin: 15px auto;
+  box-shadow: 0 0 15px #D4AF37;
+}
+
+.subtitle {
+  color: #F5D76E;
+  letter-spacing: 2px;
+  font-size: 14px;
+}
+
+.menu {
+  width: 100%;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 40px;
+}
+
+@keyframes michiGlow {
+  0%,100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.03);
+  }
+}

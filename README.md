@@ -1,1 +1,1 @@
-# Michi-ai
+# Michi-AI

@@ -1,4 +1,5 @@
 import "../theme/michiTheme.css";
+import FileUploader from "../components/FileUploader.jsx";
 
 function Documents() {
   return (

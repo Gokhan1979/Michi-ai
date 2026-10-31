@@ -1,4 +1,5 @@
 import "../theme/michiTheme.css";
+import FileUploader from "../components/FileUploader.jsx";
 
 function ImageAI() {
   return (
@@ -25,6 +26,8 @@ function ImageAI() {
       <button className="michi-button">
         Upload Image
       </button>
+
+      <FileUploader />
 
     </div>
   );

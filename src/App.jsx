@@ -5,6 +5,11 @@ function App() {
     <div className="app">
 
       <div className="logo-area">
+        <img 
+  src="/src/assets/michi-logo.png" 
+  alt="MICHI Logo"
+  className="michi-logo"
+/>
         <h1 className="michi-title">
           MICHI
         </h1>

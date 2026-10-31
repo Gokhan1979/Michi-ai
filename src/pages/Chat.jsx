@@ -1,5 +1,27 @@
 import { useState } from "react";
-import { askMichi } from "../AI/michiAI.js";
+async function askMichi(message) {
+
+  const response = await fetch(
+    "http://localhost:3001/ask-michi",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+
+      body: JSON.stringify({
+        message: message
+      })
+
+    }
+  );
+
+
+  const data = await response.json();
+
+  return data.reply;
+
+}
 import "../theme/michiTheme.css";
 
 function Chat() {

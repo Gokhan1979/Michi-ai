@@ -1,0 +1,39 @@
+:root {
+  --michi-black: #050505;
+  --michi-gold: #D4AF37;
+  --michi-light-gold: #F5D76E;
+  --michi-white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--michi-black);
+  color: var(--michi-gold);
+  font-family: Arial, sans-serif;
+}
+
+.michi-title {
+  color: var(--michi-gold);
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.michi-button {
+  background: transparent;
+  color: var(--michi-gold);
+  border: 1px solid var(--michi-gold);
+  padding: 14px 25px;
+  border-radius: 30px;
+  font-size: 16px;
+}
+
+.michi-button:hover {
+  background: var(--michi-gold);
+  color: var(--michi-black);
+}

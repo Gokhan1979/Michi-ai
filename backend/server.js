@@ -1,4 +1,7 @@
-const express = require("express");
+import express from "express";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 
@@ -9,28 +12,44 @@ app.get("/", (req, res) => {
   res.send("MICHI AI Backend Active 🖤🥇");
 });
 
+
 app.post("/ask-michi", async (req, res) => {
 
   const userMessage = req.body.message;
 
 
-  const reply = `
+  try {
+
+    const reply = `
 MICHI AI:
 
-Mesajını aldım:
-"${userMessage}"
+Senin mesajın:
+${userMessage}
 
-Gerçek AI bağlantısı hazırlanıyor.
+AI bağlantısı için güvenli sistem hazır.
   `;
 
 
-  res.json({
-    reply: reply
-  });
+    res.json({
+      reply: reply
+    });
+
+
+  } catch (error) {
+
+    res.status(500).json({
+      error: "MICHI AI error"
+    });
+
+  }
 
 });
 
 
 app.listen(3001, () => {
-  console.log("MICHI AI Server running on port 3001");
+
+  console.log(
+    "MICHI AI Server running on port 3001"
+  );
+
 });

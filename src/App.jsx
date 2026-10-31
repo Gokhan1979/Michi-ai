@@ -66,6 +66,12 @@ function Home() {
           </button>
         </Link>
 
+        <Link to="/settings">
+  <button className="michi-button">
+    ⚙️ Settings
+  </button>
+</Link>
+
       </div>
 
     </div>

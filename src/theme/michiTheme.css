@@ -169,3 +169,10 @@ body {
   text-align: center;
   margin-top: 15px;
 }
+
+.michi-login .michi-logo {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  margin-bottom: 10px;
+}

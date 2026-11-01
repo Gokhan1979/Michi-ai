@@ -6,6 +6,7 @@ import ImageAI from "./pages/ImageAI.jsx";
 import ProjectCreator from "./pages/ProjectCreator.jsx";
 import VoiceAssistant from "./pages/VoiceAssistant.jsx";
 import Settings from "./pages/Settings.jsx";
+import Login from "./pages/Login";
 
 import "./theme/michiTheme.css";
 
@@ -98,6 +99,8 @@ function App() {
       <Route path="/voice" element={<VoiceAssistant />} />
 
       <Route path="/settings" element={<Settings />} />
+     
+      <Route path="/login" element={<Login />} />
 
     </Routes>
 

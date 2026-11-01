@@ -111,7 +111,7 @@ function App() {
 
       <Route path="/documents" element={<Documents />} />
 
-      <Route path="/image" element={<ImageAl />} />
+      <Route path="/image" element={<ImageAI />} />
 
       <Route path="/projects" element={<ProjectCreator />} />
 

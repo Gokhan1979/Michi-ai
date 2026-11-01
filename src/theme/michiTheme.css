@@ -124,3 +124,48 @@ body {
 .chat-input::placeholder {
   color: #888;
 }
+
+.page {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, #1a1405 0%, #050505 45%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+}
+
+.michi-login {
+  gap: 15px;
+}
+
+.login-box {
+  width: 90%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.login-box h2 {
+  color: var(--michi-gold);
+  letter-spacing: 3px;
+}
+
+.login-box .chat-input {
+  width: 100%;
+  margin-top: 0;
+}
+
+.login-box .michi-button {
+  width: 180px;
+  margin-top: 10px;
+}
+
+.login-box .subtitle {
+  text-align: center;
+  margin-top: 15px;
+}

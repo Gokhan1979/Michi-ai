@@ -1,18 +1,20 @@
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, Navigate } from "react-router-dom";
 
 import Chat from "./pages/Chat.jsx";
 import Documents from "./pages/Documents.jsx";
-import ImageAI from "./pages/ImageAI.jsx";
+import ImageAl from "./pages/ImageAl.jsx";
 import ProjectCreator from "./pages/ProjectCreator.jsx";
 import VoiceAssistant from "./pages/VoiceAssistant.jsx";
 import Settings from "./pages/Settings.jsx";
-import Login from "./pages/Login";
-import { Navigate } from "react-router-dom";
+import Login from "./pages/Login.jsx";
 
 import "./theme/michiTheme.css";
 
+
 function Home() {
+
   return (
+
     <div className="app">
 
       <div className="logo-area">
@@ -68,44 +70,57 @@ function Home() {
           </button>
         </Link>
 
+
         <Link to="/settings">
-  <button className="michi-button">
-    ⚙️ Settings
-  </button>
-</Link>
+          <button className="michi-button">
+            ⚙️ Settings
+          </button>
+        </Link>
+
 
       </div>
 
-    </
-      
+    </div>
+
+  );
+
+}
+
+
+
 function App() {
 
   const user = localStorage.getItem("michi_user");
+
 
   return (
 
     <Routes>
 
       <Route
-  path="/"
-  element={
-    user ? <Home /> : <Navigate to="/login" replace />
-  }
-/>
+        path="/"
+        element={
+          user
+          ? <Home />
+          : <Navigate to="/login" replace />
+        }
+      />
+
 
       <Route path="/chat" element={<Chat />} />
 
       <Route path="/documents" element={<Documents />} />
 
-      <Route path="/image" element={<ImageAI />} />
+      <Route path="/image" element={<ImageAl />} />
 
       <Route path="/projects" element={<ProjectCreator />} />
 
       <Route path="/voice" element={<VoiceAssistant />} />
 
       <Route path="/settings" element={<Settings />} />
-     
+
       <Route path="/login" element={<Login />} />
+
 
     </Routes>
 

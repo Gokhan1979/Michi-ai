@@ -1,19 +1,41 @@
 import dotenv from "dotenv";
+import OpenAI from "openai";
 
 dotenv.config();
+
+const client = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY
+});
 
 
 export async function askAI(message) {
 
-  // Gerçek AI bağlantısı buraya gelecek
+  const response = await client.chat.completions.create({
 
-  return `
-MICHI AI:
+    model: "gpt-4o-mini",
 
-Mesajını aldım:
-"${message}"
+    messages: [
+      {
+        role: "system",
+        content: `
+Sen MICHI AI'sin.
 
-AI motoru bağlantıya hazırlanıyor.
-  `;
+Siyah-altın premium yapay zeka asistanısın.
+Türkçe konuş.
+Samimi ve profesyonel ol.
+Kullanıcıya yardımcı ol.
+`
+      },
+
+      {
+        role: "user",
+        content: message
+      }
+    ]
+
+  });
+
+
+  return response.choices[0].message.content;
 
 }

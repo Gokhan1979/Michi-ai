@@ -2,7 +2,7 @@ import { Routes, Route, Link, Navigate } from "react-router-dom";
 
 import Chat from "./pages/Chat.jsx";
 import Documents from "./pages/Documents.jsx";
-import ImageAl from "./pages/ImageAl.jsx";
+import ImageAI from "./pages/ImageAI.jsx";
 import ProjectCreator from "./pages/ProjectCreator.jsx";
 import VoiceAssistant from "./pages/VoiceAssistant.jsx";
 import Settings from "./pages/Settings.jsx";

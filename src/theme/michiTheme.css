@@ -176,3 +176,24 @@ body {
   box-shadow: none;
   margin-bottom: 10px;
 }
+
+.password-box {
+  width: 100%;
+  position: relative;
+}
+
+.password-box .chat-input {
+  padding-right: 80px;
+}
+
+.show-password {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: #D4AF37;
+  cursor: pointer;
+  font-size: 14px;
+}

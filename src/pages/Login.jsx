@@ -86,20 +86,37 @@ export default function Login() {
 
 
 
-        <input
+        <div className="password-box">
 
-          className="chat-input"
+  <input
 
-          type="password"
+    className="chat-input"
 
-          placeholder="Password"
+    type={showPassword ? "text" : "password"}
 
-          value={password}
+    placeholder="Password"
 
-          onChange={(e)=>setPassword(e.target.value)}
+    value={password}
 
-        />
+    onChange={(e)=>setPassword(e.target.value)}
 
+  />
+
+  <button
+
+    type="button"
+
+    className="show-password"
+
+    onClick={() => setShowPassword(!showPassword)}
+
+  >
+
+    {showPassword ? "Hide" : "Show"}
+
+  </button>
+
+</div>
 
 
         <button

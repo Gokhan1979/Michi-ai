@@ -1,15 +1,20 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import "../theme/michiTheme.css";
+
 export default function Login() {
 
   const navigate = useNavigate();
+
+  const [mode, setMode] = useState("login");
 
   const [email, setEmail] = useState("");
 
   const [password, setPassword] = useState("");
 
-  function login() {
+
+  function submit() {
 
     if (!email || !password) {
 
@@ -19,53 +24,116 @@ export default function Login() {
 
     }
 
-    localStorage.setItem("michi_user", email);
+
+    localStorage.setItem(
+      "michi_user",
+      email
+    );
+
 
     navigate("/");
 
   }
 
+
   return (
 
-    <div className="page">
+    <div className="page michi-login">
 
-      <h1>MICHI AI</h1>
 
-      <input
-
-        className="chat-input"
-
-        placeholder="Email"
-
-        value={email}
-
-        onChange={(e)=>setEmail(e.target.value)}
-
+      <img
+        src="/src/assets/michi-logo.png"
+        alt="MICHI AI"
+        className="michi-logo"
       />
 
-      <br/><br/>
 
-      <input
+      <h1 className="michi-title">
+        MICHI AI
+      </h1>
 
-        className="chat-input"
 
-        type="password"
+      <p className="subtitle">
+        Your Intelligent Assistant
+      </p>
 
-        placeholder="Password"
 
-        value={password}
 
-        onChange={(e)=>setPassword(e.target.value)}
+      <div className="login-box">
 
-      />
 
-      <br/><br/>
+        <h2>
+          {mode === "login"
+            ? "SIGN IN"
+            : "CREATE ACCOUNT"}
+        </h2>
 
-      <button onClick={login}>
 
-        LOGIN
 
-      </button>
+        <input
+
+          className="chat-input"
+
+          placeholder="Email"
+
+          value={email}
+
+          onChange={(e)=>setEmail(e.target.value)}
+
+        />
+
+
+
+        <input
+
+          className="chat-input"
+
+          type="password"
+
+          placeholder="Password"
+
+          value={password}
+
+          onChange={(e)=>setPassword(e.target.value)}
+
+        />
+
+
+
+        <button
+          className="michi-button"
+          onClick={submit}
+        >
+
+          {mode === "login"
+            ? "SIGN IN"
+            : "CREATE ACCOUNT"}
+
+        </button>
+
+
+
+        <p
+          className="subtitle"
+          onClick={() =>
+            setMode(
+              mode === "login"
+              ? "create"
+              : "login"
+            )
+          }
+          style={{cursor:"pointer"}}
+        >
+
+          {mode === "login"
+          ? "Create Account"
+          : "Already have an account? Sign In"}
+
+        </p>
+
+
+      </div>
+
 
     </div>
 

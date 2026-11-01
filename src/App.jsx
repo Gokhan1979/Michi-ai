@@ -7,6 +7,7 @@ import ProjectCreator from "./pages/ProjectCreator.jsx";
 import VoiceAssistant from "./pages/VoiceAssistant.jsx";
 import Settings from "./pages/Settings.jsx";
 import Login from "./pages/Login";
+import { Navigate } from "react-router-dom";
 
 import "./theme/michiTheme.css";
 
@@ -75,18 +76,22 @@ function Home() {
 
       </div>
 
-    </div>
-  );
-}
-
-
+    </
+      
 function App() {
+
+  const user = localStorage.getItem("michi_user");
 
   return (
 
     <Routes>
 
-      <Route path="/" element={<Home />} />
+      <Route
+  path="/"
+  element={
+    user ? <Home /> : <Navigate to="/login" replace />
+  }
+/>
 
       <Route path="/chat" element={<Chat />} />
 

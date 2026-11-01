@@ -3,11 +3,9 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-
 const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 });
-
 
 export async function askAI(message) {
 
@@ -19,7 +17,7 @@ export async function askAI(message) {
       {
         role: "system",
         content:
-          "You are MICHI AI, a helpful intelligent assistant. Answer clearly and professionally."
+          "You are MICHI AI, a helpful intelligent assistant."
       },
       {
         role: "user",
@@ -28,7 +26,6 @@ export async function askAI(message) {
     ]
 
   });
-
 
   return response.choices[0].message.content;
 

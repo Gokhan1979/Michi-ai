@@ -1,6 +1,8 @@
 import { useState } from "react";
 async function askMichi(message) {
 
+  console.log("SENDING TO MICHI:", message);
+
   const response = await fetch(
     "https://potential-guacamole-r4xqq9g6rqjpcx4pg-3001.app.github.dev/ask-michi",
     {

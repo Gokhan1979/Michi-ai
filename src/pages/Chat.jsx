@@ -50,6 +50,7 @@ function Chat() {
 
 
     const response = await askMichi(message);
+    console.log(response);
 
 
     setChat(prev => [

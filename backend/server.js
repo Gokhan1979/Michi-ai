@@ -30,14 +30,15 @@ const reply = await askAI(userMessage);
     });
 
 
-  } catch (error) {
+} catch (error) {
+
+    console.log("MICHI ERROR:", error);
 
     res.status(500).json({
-      error: "MICHI AI error"
+      error: error.message
     });
 
-  }
-
+}
 });
 
 

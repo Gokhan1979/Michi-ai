@@ -2,7 +2,7 @@ import { useState } from "react";
 async function askMichi(message) {
 
   const response = await fetch(
-    "http://localhost:3001/ask-michi",
+    "https://potential-guacamole-r4xqq9g6rqjpcx4pg-3001.app.github.dev/ask-michi",
     {
       method: "POST",
       headers: {

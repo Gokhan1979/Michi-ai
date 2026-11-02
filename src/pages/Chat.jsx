@@ -1,34 +1,14 @@
-import { useState } from "react";
-async function askMichi(message) {
-
-  console.log("SENDING TO MICHI:", message);
-
-  const response = await fetch(
-    "https://potential-guacamole-r4xqq9g6rqjpcx4pg-3001.app.github.dev/ask-michi",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-
-      body: JSON.stringify({
-        message: message
-      })
-
-    }
-  );
-
-
-  const data = await response.json();
-
-  return data.reply;
-
-}
+import { useState, useRef, useEffect } from "react";
 import "../theme/michiTheme.css";
 
-function Chat() {
+const MICHI_API =
+  "https://potential-guacamole-r4xqq9g6rqjpcx4pg-3001.app.github.dev/ask-michi";
+
+
+export default function Chat() {
 
   const [message, setMessage] = useState("");
+
   const [chat, setChat] = useState([
     {
       role: "michi",
@@ -36,35 +16,95 @@ function Chat() {
     }
   ]);
 
+  const [loading, setLoading] = useState(false);
+
+  const bottomRef = useRef(null);
+
+
+  useEffect(() => {
+
+    bottomRef.current?.scrollIntoView({
+      behavior: "smooth"
+    });
+
+  }, [chat, loading]);
+
 
   async function sendMessage() {
 
     if (!message.trim()) return;
 
 
-    const userMessage = {
-      role: "user",
-      text: message
-    };
-
-
-    setChat([...chat, userMessage]);
-
-
-    const response = await askMichi(message);
-    console.log(response);
+    const userText = message;
 
 
     setChat(prev => [
       ...prev,
       {
-        role: "michi",
-        text: response
+        role: "user",
+        text: userText
       }
     ]);
 
 
     setMessage("");
+    setLoading(true);
+
+
+    try {
+
+      const response = await fetch(
+        MICHI_API,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            message: userText
+          })
+        }
+      );
+
+
+      const data = await response.json();
+
+
+      setChat(prev => [
+        ...prev,
+        {
+          role: "michi",
+          text:
+            data.reply ||
+            "MICHI cevap alamadı."
+        }
+      ]);
+
+
+    } catch (error) {
+
+      setChat(prev => [
+        ...prev,
+        {
+          role: "michi",
+          text:
+            "Bağlantı hatası. Backend kontrol edilmeli."
+        }
+      ]);
+
+    }
+
+
+    setLoading(false);
+
+  }
+
+
+  function handleKey(e) {
+
+    if (e.key === "Enter") {
+      sendMessage();
+    }
 
   }
 
@@ -82,20 +122,37 @@ function Chat() {
 
         {chat.map((item,index)=>(
 
-          <p key={index}>
-            <b>
-              {item.role === "michi"
-              ? "🐾 MICHI:"
-              : "👤 Sen:"}
-            </b>
+          <div key={index}>
 
-            <br />
+            <p>
 
-            {item.text}
+              <b>
+                {item.role === "michi"
+                ? "🐾 MICHI"
+                : "👤 Sen"}
+              </b>
 
-          </p>
+              <br />
+
+              {item.text}
+
+            </p>
+
+          </div>
 
         ))}
+
+
+        {loading && (
+
+          <p>
+            🐾 MICHI düşünüyor...
+          </p>
+
+        )}
+
+
+        <div ref={bottomRef}></div>
 
       </div>
 
@@ -107,6 +164,8 @@ function Chat() {
         value={message}
 
         onChange={(e)=>setMessage(e.target.value)}
+
+        onKeyDown={handleKey}
 
         placeholder="MICHI'ye yaz..."
 
@@ -131,6 +190,3 @@ function Chat() {
   );
 
 }
-
-
-export default Chat;

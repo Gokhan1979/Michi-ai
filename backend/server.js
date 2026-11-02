@@ -14,7 +14,8 @@ app.get("/", (req, res) => {
 
 
 app.post("/ask-michi", async (req, res) => {
-
+console.log("MICHI REQUEST:", req.body);
+  
   const userMessage = req.body.message;
 
 
